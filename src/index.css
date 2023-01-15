@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.hand-icon{
+  cursor: pointer;
+  margin:4px;
+}
+
+.nav-link{
+  color:black;
+  text-decoration: none;
+
+}
+
