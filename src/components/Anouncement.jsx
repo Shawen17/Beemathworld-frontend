@@ -11,6 +11,11 @@ const Container = styled.div`
     justify-content: center;
     font-size:14px;
     font-weight:500;
+
+    @media screen and (max-width: 600px){
+      height:40px;
+      font-size:12px;
+  }
   `
 
 

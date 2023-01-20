@@ -24,7 +24,7 @@ const Wrapper = styled.div`
       padding:5px 20px;
       display: flex;
       justify-content: center;
-      align-items:center
+      align-items:center;
       position:relative;
 `
 export const SearchContainer = styled.div`
@@ -38,7 +38,8 @@ export const SearchContainer = styled.div`
     width:60%;
 
     @media screen and (max-width: 600px){
-      width:100%}
+      width:100%;
+    }
 `
 const Input = styled.input`
       type: text;

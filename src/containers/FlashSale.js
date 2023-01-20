@@ -7,10 +7,25 @@ import {logout,addToCart} from '../actions/auth';
 import { connect } from 'react-redux';
 import {descriptionDisplay} from './Products';
 import Pagination from '../components/Pagination';
+import styled from 'styled-components';
 
 
 require('dotenv').config()
 let PageSize = 6;
+
+
+const Title= styled.div`
+    margin:5px;
+    border-radius:6px;
+    display:flex;
+    flex:100%;
+    align-items:center;
+    justify-content:center;
+
+    @media screen and (max-width: 600px){
+        margin:5px 2px 5px 2px;
+    }
+`
 
 const FlashSale =(props)=> {
     const [currentPage, setCurrentPage] = useState(1);
@@ -78,10 +93,7 @@ const FlashSale =(props)=> {
         return products.items.sales
     },[products])
 
-    // var filteredProduct = flashSale.filter(function(product){ 
-    //     return product.category.includes(searchValue) || product.description.includes(searchValue)
-        
-    // })
+    
 
     const currentData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
@@ -90,9 +102,9 @@ const FlashSale =(props)=> {
       }, [currentPage,flashSale]); 
 
     const flashSaleHeader=()=>(
-        <div className="mt-3" style={{backgroundColor:'blueviolet',borderRadius:'6px'}}>
-            <h1 style={{textAlign:'center'}}>Flash Sales</h1>
-        </div>
+        <Title>
+            <img src="/FlashSales.jpg" height='120px' width='100%' alt="flashsale" />
+        </Title>
     )
 
     

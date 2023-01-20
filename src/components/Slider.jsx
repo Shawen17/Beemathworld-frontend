@@ -59,6 +59,10 @@ const InfoContainer = styled.div`
     width:100%;
     padding:35px;
 `
+const Image = styled.img`
+    height:100%;
+    width:100%;
+    `
 
 const Slide = styled.div`
     width: 100vw;
@@ -83,21 +87,17 @@ const Slide = styled.div`
         padding:5px;
     }
     ${ImgContainer}{
-        flex:30%;
+        flex:100%;
         height:50%;
     }
     ${InfoContainer}{
-        flex:70%;
-        height:50%;
-        width:50%;
+        flex:0%;
+        height:0%;
+        width:0%;
     }
 }
 `
-const Image = styled.img`
-    height:100%;
-    width:100%;
-    object-fit:cover;
-`
+
 
 
 const Slider = () => {
@@ -117,7 +117,7 @@ const Slider = () => {
             <Wrapper className='wrapper'>
                 <Slide className='pic' id='pic4'>
                 <ImgContainer>
-                    <Image src="/freestock.jpg" alt='slide'/>
+                    <Image src="/Web Carousel1-1.jpg" alt='slide'/>
                 </ImgContainer>
                 <InfoContainer color='black'>
                     <Title>HOME OF EASY LIFE GADGETS</Title> 
@@ -127,7 +127,7 @@ const Slider = () => {
                 </Slide>
                 <Slide className='pic' id='pic3'>
                     <ImgContainer>
-                        <Image src="/depositphotos.jpg" alt='slide'/>
+                        <Image src="/Web Carousel2-2.jpg" alt='slide'/>
                     </ImgContainer>
                     <InfoContainer color='white'>
                         <Title>KITCHEN GADGETS</Title> 
@@ -137,7 +137,7 @@ const Slider = () => {
                 </Slide>
                 <Slide className='pic' id='pic2'>
                     <ImgContainer>
-                        <Image src="/freestock.jpg" alt='slide'/>
+                        <Image src="/Web Carousel3-1.jpg" alt='slide'/>
                     </ImgContainer>
                     <InfoContainer color='black'>
                         <Title>SELFCARE GADGETS</Title> 
@@ -147,7 +147,7 @@ const Slider = () => {
                 </Slide>
                 <Slide  className='pic' id='pic1'>
                     <ImgContainer>
-                        <Image src="/depositphotos.jpg" alt='slide'/>
+                        <Image src="/Web Carousel4-1.jpg" alt='slide'/>
                     </ImgContainer>
                     <InfoContainer color='black'>
                         <Title>BATHROOM GADGETS</Title> 
