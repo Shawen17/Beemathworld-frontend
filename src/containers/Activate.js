@@ -22,7 +22,7 @@ const Activate = ({match,verify}) =>{
     }
 
     return(
-        <div className='container'>
+        <div className='container' style={{marginTop:'110px'}}>
             <div className='d-flex flex-column justify-content-center align-items-center'  style={{marginTop:'200px'}}>
                 <hi>Verify your account</hi>
                 <button className='btn btn-primary mt-3' onClick={verify_account} type='button'>Verify</button>

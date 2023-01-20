@@ -22,7 +22,7 @@ const ResetPassword = ({reset_password}) =>{
     }
 
     return(
-        <div className='container mt-5'>
+        <div className='container' style={{marginTop:'110px'}} >
             <h2>Request Password Reset </h2>
             <Form className='mt-3' onSubmit={handleSubmit}>
                 <Input type='email' name='email' value={input} onChange={(e)=>{setInput(e.target.value)}} required />

@@ -52,6 +52,23 @@ export const FormDisplay = styled.div`
     }
     
 `
+const Image=styled.img`
+    width:100%;
+    height:100%;
+`
+
+const ImageContainer = styled.div`
+    width:90vw;
+    height:100vh;
+    margin-bottom:10px;
+
+    @media screen and (max-width: 600px){
+        height:60vh;
+    }
+
+`
+
+
 
 
 const contactOptions =[
@@ -112,6 +129,9 @@ const ContactUs =({isAuthenticated})=>{
 
     return (
         <Container>
+            <ImageContainer>
+                <Image  src='/CustomerCare-1.jpg' alt='contact-us'  />
+            </ImageContainer>
           <Title>We love to hear from you </Title>
           <FormDisplay>
             <Form style={formDisplay} onSubmit={HandleSubmit}>

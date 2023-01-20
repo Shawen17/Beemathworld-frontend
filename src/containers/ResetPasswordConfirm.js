@@ -33,7 +33,7 @@ const ResetPasswordConfirm = ({match,password_reset_confirm}) =>{
     }
 
     return(
-        <div className='container mt-5'>
+        <div className='container' style={{marginTop:'110px'}}>
             <h2>Password reset confirm </h2>
             <Form className='mt-3' onSubmit={handleSubmit}>
                 <Input className='mt-3' placeholder='new password..'  type='password' name='password' value={inputs.password || ''} onChange={handleEventChange} required />
