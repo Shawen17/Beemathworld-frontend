@@ -58,7 +58,7 @@ const Products = (props) => {
             'Accept':'application/json'
         }
     };
-    axios.get(process.env.REACT_APP_API_URL, config).then(res => setProductValue({items:res.data}))},[])
+    axios.get('http://shawen.pythonanywhere.com/api/giveaway/', config).then(res => setProductValue({items:res.data}))},[])
 
     const HandleButtonClick= async (product,toggle)=>{
             if(token!=null){
