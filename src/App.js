@@ -16,7 +16,7 @@ import Layout from './hoc/Layout';
 import { Provider } from 'react-redux';
 import store from './store';
 import ProductCategory from './containers/ProductCategory';
-
+import AboutUs from './containers/AboutUs';
 
 
 
@@ -42,6 +42,7 @@ const App = () =>{
             <Route path='/reset-password' exact element={<ResetPassword />}  />
             <Route path='/password/reset/confirm/:uid/:token' exact element={<ResetPasswordConfirm />}  />
             <Route path="/contact" exact element={<ContactUs />} />
+            <Route path="/about-us" exact element={<AboutUs />} />
            
           </Routes>
           

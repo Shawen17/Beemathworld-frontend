@@ -119,13 +119,13 @@ const Footer = () => {
             </Left>
             <Center>
                 <Desc>Beemathworld</Desc>
-                <FootItem><Link className="nav-link" to='/'>About us</Link></FootItem>
+                <FootItem><Link className="nav-link" to='/about-us'>About us</Link></FootItem>
                 <SocialContainer>
                     <SocialIcon color='#55ACEE'>
                         <Twitter />
                     </SocialIcon>
                     <SocialIcon  color='#E4405F'>
-                        <Instagram />
+                        <a style={{color:'white'}} target='_blank' rel="noopener noreferrer" href='https://www.instagram.com/beemathworld' ><Instagram /></a>
                     </SocialIcon>
                 </SocialContainer>
             </Center>
