@@ -1,6 +1,5 @@
 import React, {useEffect,useState,useMemo } from "react";
 import axios from 'axios';
-import { Row, Col } from 'reactstrap';
 import ProductCat from "./ProductCat";
 import { useNavigate } from 'react-router-dom';
 import {logout,addToCart} from '../actions/auth';
