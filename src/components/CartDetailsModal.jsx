@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {ShoppingCartOutlined} from '@material-ui/icons';
 import { Badge } from '@material-ui/core';
 import styled from 'styled-components';
+import {BASE_URL} from './Url';
 require('dotenv').config()
 
 
@@ -90,7 +91,7 @@ const CartDetailsModal =(props) => {
     const [toggle,setToggle]= useState({modal:false})
     
     
-    const BASE_URL='https://shawen.pythonanywhere.com'
+    
     
     const toggleModal=()=> {
       setToggle({

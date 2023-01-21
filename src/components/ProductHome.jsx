@@ -4,6 +4,7 @@ import { Modal, ModalHeader, ModalBody, Container, Card, CardBody,
 import Counter from './Counter'; 
 import styled from 'styled-components';
 import VideoPlayer from 'react-simple-video-player';
+import {BASE_URL} from './Url';
 
 
 
@@ -86,7 +87,7 @@ const ProductHome=(props) =>{
   
     
 
-  const BASE_URL='https://shawen.pythonanywhere.com'
+  
   
   const toggle = () => {
       setModal(!modal)

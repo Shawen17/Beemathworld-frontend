@@ -10,6 +10,7 @@ import VideoPlayer from 'react-simple-video-player';
 import {descriptionDisplay} from '../containers/Products';
 import styled from 'styled-components';
 import ProductHome from './ProductHome';
+import {BASE_URL} from './Url';
 
 
 require('dotenv').config()
@@ -88,7 +89,7 @@ const HomeRecentlyAdded =(props)=> {
     })
     const email = localStorage.getItem('email')
     const token = localStorage.getItem('access')
-    const BASE_URL='https://shawen.pythonanywhere.com'
+    
     const navigate= useNavigate()
 
     

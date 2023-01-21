@@ -219,7 +219,7 @@ export const fetchCart =(email) => async dispatch =>{
             }
         };
         try{
-            const res= await axios.put('http://localhost:8000/api/cart/display/', body, config);
+            const res= await axios.put(`${process.env.REACT_APP_GIVEAWAYNOW_API_URL}/api/cart/display/`, body, config);
             if(res.data.code !=='token_not_valid'){
                 dispatch({
                     type:CART_LOADED_SUCCESS,
@@ -256,7 +256,7 @@ export const addToCart =(email,product,count) => async dispatch =>{
             }
         };
         try{
-            const res= await axios.put('http://localhost:8000/api/update/cart/', body, config);
+            const res= await axios.put(`${process.env.REACT_APP_GIVEAWAYNOW_API_URL}/api/update/cart/`, body, config);
             if(res.data.code !=='token_not_valid'){
                 dispatch({
                     type:CART_ADDED_SUCCESS,

@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import { Container, Card, CardImg, CardBody,
     CardSubtitle, Button, CardText } from 'reactstrap';
 import Counter from '../components/Counter'; 
-
+import {BASE_URL} from './Url';
 
 const GiveDetails =(props)=>{
     const [count,setCount] = useState(0)
     const product=props.product
-    const BASE_URL='https://shawen.pythonanywhere.com'
+    
 
 
 

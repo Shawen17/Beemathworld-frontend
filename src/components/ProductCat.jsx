@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import {BASE_URL} from './Url';
 
 
 const ImgContainer= styled.div`
@@ -27,7 +28,7 @@ const ImgContainer= styled.div`
 
 const ProductCat =(props)=>{
     const product = props.product
-    const BASE_URL='https://shawen.pythonanywhere.com'
+    
     
 
     return(
