@@ -317,10 +317,10 @@ const HomeRecentlyAdded =(props)=> {
            
             
             {products.items.sales.length>0? flashSaleHeader():''}
-            <Row style={{borderRadius:6,border:"1px"}}>
+            <TopCon>
             {!products.items || products.items.length<=0 ? (<div width='50%' height='80%' className="text-center"><img src='/loading.gif' alt='loading..' /></div>):
                         (flashSale.map(product=> (
-                    <Col  xs="4" sm="4" md="3" lg="2" key={product.id} > 
+                    <TopImg  key={product.id} > 
                         
                             <ProductHome 
                             
@@ -333,8 +333,8 @@ const HomeRecentlyAdded =(props)=> {
                             decrement={decrement}
                             increment={increment} />
                         
-                    </Col>)))}
-            </Row>
+                    </TopImg>)))}
+            </TopCon>
 
             
         </div>
