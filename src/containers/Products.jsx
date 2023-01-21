@@ -81,7 +81,7 @@ const Products = (props) => {
          filteredProduct= productValue.items
     }else{
         filteredProduct = productValue.items.filter(function(product){ 
-            return product.category.includes(props.searchValue) || product.description.includes(props.searchValue)
+            return product.category.includes(props.searchValue.toLowerCase()) || product.description.toLowerCase().includes(props.searchValue.toLowerCase())
     })
     }
 
