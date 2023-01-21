@@ -100,7 +100,7 @@ const DashBoard = (props) =>{
             }
         };
         
-        axios.put('http://localhost:8000/api/orders/', body, config).then((res) =>{ 
+        axios.put('https://shawen.pythonanywhere.com/api/orders/', body, config).then((res) =>{ 
                 setOrders({items:res.data})}).catch((err)=>{
                     if(err.response){
                         props.logout()

@@ -56,7 +56,7 @@ const FlashSale =(props)=> {
                 'Accept':'application/json'
             }
         };
-        axios.get(process.env.REACT_APP_RECENTLY_ADDED, config).then(res => setProducts({items:res.data}))
+        axios.get('https://shawen.pythonanywhere.com/api/recent/addition/', config).then(res => setProducts({items:res.data}))
 
     },[])
 

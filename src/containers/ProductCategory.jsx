@@ -45,7 +45,7 @@ const ProductCategory =(props)=> {
                 'Accept':'application/json'
             }
         };
-        axios.get(process.env.REACT_APP_API_URL, config).then(res => setProducts({items:res.data}))
+        axios.get('https://shawen.pythonanywhere.com/api/giveaway/', config).then(res => setProducts({items:res.data}))
 
     },[])
 

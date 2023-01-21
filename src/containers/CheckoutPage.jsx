@@ -83,11 +83,11 @@ const CheckoutPage=(props)=>{
 
     useEffect(()=>{
         
-        axios.put(process.env.REACT_APP_DELIVERY, body, config).then(res => 
+        axios.put('https://shawen.pythonanywhere.com/api/checkout/', body, config).then(res => 
            setLocations({items:res.data})
         );
         return ()=>{
-            axios.put(process.env.REACT_APP_DELIVERY, body, config).then(res => 
+            axios.put('https://shawen.pythonanywhere.com/api/checkout/', body, config).then(res => 
                 setLocations({items:res.data})
            )
     }},[])
