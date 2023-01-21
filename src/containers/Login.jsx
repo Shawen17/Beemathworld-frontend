@@ -42,7 +42,7 @@ export const Outline = styled.div`
 
 const Login = ({login,isAuthenticated,loginFailed}) => {
     const [inputValues,setValues]=useState({})
-    // const [error,setError] = useState()
+    
     document.title = 'login'
     
     

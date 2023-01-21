@@ -50,6 +50,8 @@ const CheckoutPage=(props)=>{
     
     const email = localStorage.getItem('email')
     const items = sessionStorage.getItem('products')
+
+    console.log('email:',email,'items:',items)
     
     const productAmount=locations.items.amount.total
     const amount = parseInt(productAmount)
