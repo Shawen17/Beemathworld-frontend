@@ -133,7 +133,7 @@ const CheckoutPage=(props)=>{
                             'Accept':'application/json'
                             }
                         };
-                axios.post('http://localhost:8000/api/initiate-payment/', body, config);
+                axios.post('https://shawen.pythonanywhere.com/api/initiate-payment/', body, config);
                 props.checkout()
                 
                 alert("Thanks for doing business with us! Come back soon!!")
