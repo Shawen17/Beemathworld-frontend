@@ -27,7 +27,7 @@ const ImgContainer= styled.div`
 
 const ProductCat =(props)=>{
     const product = props.product
-    const BASE_URL="http://127.0.0.1:8000"
+    const BASE_URL='https://shawen.pythonanywhere.com'
     
 
     return(

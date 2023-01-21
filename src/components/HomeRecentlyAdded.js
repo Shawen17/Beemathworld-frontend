@@ -88,7 +88,7 @@ const HomeRecentlyAdded =(props)=> {
     })
     const email = localStorage.getItem('email')
     const token = localStorage.getItem('access')
-    const BASE_URL="http://127.0.0.1:8000"
+    const BASE_URL='https://shawen.pythonanywhere.com'
     const navigate= useNavigate()
 
     
@@ -101,7 +101,7 @@ const HomeRecentlyAdded =(props)=> {
                 'Accept':'application/json'
             }
         };
-        axios.get(process.env.REACT_APP_RECENTLY_ADDED, config).then(res => setProducts({items:res.data}))
+        axios.get('https://shawen.pythonanywhere.com/api/recent/addition/', config).then(res => setProducts({items:res.data}))
 
     },[])
 

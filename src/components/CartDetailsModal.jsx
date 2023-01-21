@@ -90,7 +90,7 @@ const CartDetailsModal =(props) => {
     const [toggle,setToggle]= useState({modal:false})
     
     
-    const BASE_URL="http://127.0.0.1:8000"
+    const BASE_URL='https://shawen.pythonanywhere.com'
     
     const toggleModal=()=> {
       setToggle({

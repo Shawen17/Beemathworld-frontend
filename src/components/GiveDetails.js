@@ -7,7 +7,7 @@ import Counter from '../components/Counter';
 const GiveDetails =(props)=>{
     const [count,setCount] = useState(0)
     const product=props.product
-    const BASE_URL="http://127.0.0.1:8000"
+    const BASE_URL='https://shawen.pythonanywhere.com'
 
 
 
