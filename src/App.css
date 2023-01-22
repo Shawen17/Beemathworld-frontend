@@ -253,9 +253,11 @@ ul {
   
 }
 #fsh-sale{
-  background-color: blueviolet;
+  width: 100%;
+  height: 60px;
+  background-color: aqua;
   border-radius:6px;
-  margin: 30px;
+  margin: 30px 5px 5px 20px;
   box-shadow: 0 6px 8px 0 rgba(0,255,255,0.2);
 }
 
