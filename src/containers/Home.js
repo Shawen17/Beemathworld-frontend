@@ -5,9 +5,6 @@ import Slider from "../components/Slider";
 
 
 const Home = () => {
-  
-  
-  
   return (
     <div style={{marginTop:30}} >
       <Slider />
