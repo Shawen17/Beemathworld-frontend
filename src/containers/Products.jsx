@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import {logout,addToCart} from '../actions/auth';
 import { connect } from 'react-redux';
 import Pagination from '../components/Pagination';
+import {BASE_URL} from '../components/Url';
 
 
 require('dotenv').config()
@@ -58,7 +59,7 @@ const Products = (props) => {
             'Accept':'application/json'
         }
     };
-    axios.get('https://shawen.pythonanywhere.com/api/giveaway/', config).then(res => setProductValue({items:res.data}))},[])
+    axios.get(`${BASE_URL}/api/giveaway/`, config).then(res => setProductValue({items:res.data}))},[])
 
     const HandleButtonClick= async (product,toggle)=>{
             if(token!=null){

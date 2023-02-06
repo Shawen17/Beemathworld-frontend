@@ -9,6 +9,7 @@ import ProductDetailsModal from '../components/ProductDetailsModal';
 import Pagination from '../components/Pagination';
 import {descriptionDisplay} from './Products';
 import styled from 'styled-components';
+import {BASE_URL} from '../components/Url';
 require('dotenv').config()
 
 
@@ -100,7 +101,7 @@ const DashBoard = (props) =>{
             }
         };
         
-        axios.put('https://shawen.pythonanywhere.com/api/orders/', body, config).then((res) =>{ 
+        axios.put(`${BASE_URL}/api/orders/`, body, config).then((res) =>{ 
                 setOrders({items:res.data})}).catch((err)=>{
                     if(err.response){
                         props.logout()

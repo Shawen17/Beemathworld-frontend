@@ -101,7 +101,7 @@ const HomeRecentlyAdded =(props)=> {
                 'Accept':'application/json'
             }
         };
-        axios.get('https://shawen.pythonanywhere.com/api/recent/addition/', config).then(res => setProducts({items:res.data}))
+        axios.get(`${BASE_URL}/api/recent/addition/`, config).then(res => setProducts({items:res.data}))
 
     },[])
 

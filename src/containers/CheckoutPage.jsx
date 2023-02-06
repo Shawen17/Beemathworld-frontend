@@ -7,6 +7,8 @@ import {checkout} from '../actions/auth';
 import { connect } from 'react-redux';
 import { Container,Title,FormDisplay } from './ContactUs';
 import styled from 'styled-components';
+import {BASE_URL} from '../components/Url';
+
 
 const CheckInine = styled.div`
     display:flex;
@@ -85,11 +87,11 @@ const CheckoutPage=(props)=>{
 
     useEffect(()=>{
         
-        axios.put('https://shawen.pythonanywhere.com/api/checkout/', body, config).then(res => 
+        axios.put(`${BASE_URL}/api/checkout/`, body, config).then(res => 
            setLocations({items:res.data})
         );
         return ()=>{
-            axios.put('https://shawen.pythonanywhere.com/api/checkout/', body, config).then(res => 
+            axios.put(`${BASE_URL}/api/checkout/`, body, config).then(res => 
                 setLocations({items:res.data})
            )
     }},[])
@@ -135,7 +137,7 @@ const CheckoutPage=(props)=>{
                             'Accept':'application/json'
                             }
                         };
-                axios.post('https://shawen.pythonanywhere.com/api/initiate-payment/', body, config);
+                axios.post(`${BASE_URL}/api/initiate-payment/`, body, config);
                 props.checkout()
                 
                 alert("Thanks for doing business with us! Come back soon!!")

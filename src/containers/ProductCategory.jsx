@@ -9,6 +9,7 @@ import {descriptionDisplay} from './Products';
 import Pagination from '../components/Pagination';
 import styled from 'styled-components';
 import { useParams } from "react-router-dom";
+import {BASE_URL} from '../components/Url';
 
 const Header= styled.div`
     height:40px;
@@ -45,7 +46,7 @@ const ProductCategory =(props)=> {
                 'Accept':'application/json'
             }
         };
-        axios.get('https://shawen.pythonanywhere.com/api/giveaway/', config).then(res => setProducts({items:res.data}))
+        axios.get(`${BASE_URL}/api/giveaway/`, config).then(res => setProducts({items:res.data}))
 
     },[])
 

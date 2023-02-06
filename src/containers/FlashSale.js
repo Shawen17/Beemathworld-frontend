@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import {descriptionDisplay} from './Products';
 import Pagination from '../components/Pagination';
 import styled from 'styled-components';
+import {BASE_URL} from '../components/Url';
 
 
 require('dotenv').config()
@@ -56,7 +57,7 @@ const FlashSale =(props)=> {
                 'Accept':'application/json'
             }
         };
-        axios.get('https://shawen.pythonanywhere.com/api/recent/addition/', config).then(res => setProducts({items:res.data}))
+        axios.get(`${BASE_URL}/api/recent/addition/`, config).then(res => setProducts({items:res.data}))
 
     },[])
 
