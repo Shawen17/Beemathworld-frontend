@@ -148,7 +148,7 @@ const DashBoard = (props) =>{
 
         const noPreviousOrders = () => (
             <div className='container mt-3 justify-content-center' style={{height:420,borderRadius:6,border:"1px",}}>
-                <img className='center mt-4' style={{height:80,borderRadius:20,width:80}} src='/beemathLogo.png' alt='order'/>
+                <img className='center mt-4' style={{height:120,borderRadius:20,width:120}} src='/beemathLogo.png' alt='order'/>
                 <h2 className='order-header'>You are yet to make any order</h2>
                 <p className='mt-3' style={{textAlign:'center'}}> Start making orders so we can also suggest other products you might like</p>
                 <button className='start-shopping-button center'><Link style={{textDecoration:'none',color:'white'}} to="/products">START SHOPPING</Link></button>
