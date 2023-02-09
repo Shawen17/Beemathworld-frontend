@@ -51,8 +51,8 @@ const Signup =({signup,isAuthenticated})=>{
       navigate('/products')
     }
     if(accountCreated){
-      navigate('/')
-      alert('A verification link has been sent to your mail')
+      navigate('/signup/verify')
+      
     }
 
 
