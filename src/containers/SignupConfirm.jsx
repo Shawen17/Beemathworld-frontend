@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {OutboxOutlinedIcon} from '@material-ui/icons';
+import {OutboxOutlinedIcon} from '@mui/icons-material/OutboxOutlined';
 
 
 const Container=styled.div`
