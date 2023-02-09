@@ -17,7 +17,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import ProductCategory from './containers/ProductCategory';
 import AboutUs from './containers/AboutUs';
-import SignupConfirm from './containers/SignupConfirm';
+import SignupVerify from './containers/SignupVerify';
 
 
 
@@ -39,7 +39,7 @@ const App = () =>{
             <Route path="/flash-sales" exact element={<FlashSale />} />
             <Route path="/checkout" exact element={<CheckoutPage />} />  
             <Route path="/signup" exact element={<Signup />} />
-            <Route path='/signup/verify' exact element={<SignupConfirm />}  />
+            <Route path="/signup/verify" exact element={<SignupVerify />}  />
             <Route path='/activate/:uid/:token' exact element={<Activate />}  />
             <Route path='/reset-password' exact element={<ResetPassword />}  />
             <Route path='/password/reset/confirm/:uid/:token' exact element={<ResetPasswordConfirm />}  />
