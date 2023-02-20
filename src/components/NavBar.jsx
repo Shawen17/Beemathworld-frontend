@@ -9,6 +9,7 @@ import axios from "axios";
 import Products from '../containers/Products';
 import NavMenu from './NavMenu';
 import Anouncement from './Anouncement';
+import ClickAwayListener from 'react-click-away-listener';
 require('dotenv').config()
 
 const Container = styled.div`
@@ -150,7 +151,7 @@ const NavBar =(props)=> {
           </Wrapper>
       </Container>
         {toggle ? (
-          <div>
+          <ClickAwayListener onClickAway={() => setToggle(false)}>
             <div className='menu-appear' >
               <SearchContainer className='search-con'>
                 <Input placeholder="search category, Product.." value={searchValue}  onChange={HandleInputChange} /> 
@@ -158,7 +159,7 @@ const NavBar =(props)=> {
               </SearchContainer>
               <NavMenu  onLogout={onLogout}/>
             </div>
-          </div>) : ''}
+          </ClickAwayListener>) : ''}
       
         
     </div> 
