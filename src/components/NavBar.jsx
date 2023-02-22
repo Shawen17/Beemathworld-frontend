@@ -163,7 +163,7 @@ const NavBar =(props)=> {
       
         
     </div> 
-    {searchValue.length>2 ? <Products searchValue={searchValue} /> :''}
+    {searchValue.length>3 ? <Products searchValue={searchValue} /> :''}
   </div>  
     )}
   
