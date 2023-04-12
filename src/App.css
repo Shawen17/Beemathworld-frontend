@@ -378,6 +378,34 @@ ul {
 width: 100%;
 }
 
+.desc{
+  color:darkgrey;
+  font-size: 13px;
+  font-weight: 500;
+  padding:5px 0px 0px 5px;
+}
+.desc p{
+  font-family: 'Urbanist', sans-serif;
+  font-weight: bold;
+}
+
+
+
+.desc div{
+  color:black;
+  font-weight:bolder;
+  font-size: 12px;
+}
+
+.amt{
+  margin:10px 5px 0px 0px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -495,3 +523,24 @@ width: 100%;
   100% {opacity: 1;}
 }
 
+.grow{
+  -webkit-animation: fade 3s ease-in-out;
+  animation: glow 3s ease-in-out;
+}
+
+
+@-webkit-keyframes glow {
+  0% {opacity: 1;transform: scale(1);}
+  25% {opacity: 1;transform: scale(2);}
+  50% {opacity: 0;}
+  75% {opacity: 1;transform: scale(3);}
+  100% {opacity: 0;}
+}
+
+@keyframes glow {
+  0% {opacity: 1;transform: scale(1);}
+  25% {opacity: 1;transform: scale(2);}
+  50% {opacity: 0;}
+  75% {opacity: 1;transform: scale(3);}
+  100% {opacity: 0;}
+}

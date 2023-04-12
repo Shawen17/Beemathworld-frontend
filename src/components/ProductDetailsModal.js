@@ -7,72 +7,76 @@ import VideoPlayer from 'react-simple-video-player';
 import {BASE_URL} from './Url';
 
 
-
 const Circle = styled.div`
-  display:flex;
-  height:220px;
+  background-color:rgba(128,128,128,0.1);
+  height:100px;
+  width:100%;
   position:relative;
-  flex-wrap:wrap;
+  border-radius:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 `
+
 const ProductImg = styled.img`
-  height:200px;
-  width:150px;
-  borderRadius:6px;
-  margin: 0;
+  height:100px;
+  width:70%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  bottom:0;
 `
 
 const ProductContainer = styled.div`
-  margin: 5px;
-  justify-content:center;
-  text-align:left;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  font-size: 20px;
-  height:270px;
-  cursor:pointer;
-
-  &:hover{
-    transform: scale(1.1);
-    transition: all 0.5s ease;
-  }
-  @media screen and (max-width: 768px){
-    height:220px;
-    margin:3px;
-    font-size:15px;
-
-    ${Circle}{
-      height:170px;
-    }
-    ${ProductImg}{
-      height:150px;
-      width:130px;
-    }
-}
-
+    height:240px;
+    width:150px;
+    font-size: 13px;
+    cursor:pointer;
+    margin-bottom:15px;
+`
+const Details = styled.div`
+height:120px;
+width:100%;
 `
 
-const Details = styled.div`
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+
+const Circ = styled.div`
+  position:absolute;
+  border-radius:50%;
+  border:0.5px solid grey;
+`
+
+const SmallCircle = styled(Circ)`
+  width:20px;
+  height:20px;
+  z-index:20;
+  top:${(prop)=>prop.testPosition?.top}px;
+  left:${(prop)=>prop.testPosition?.left}px;
+  display:${(prop)=>prop.testPosition?.display};
 `
 
 
 
 const ProductDetailsModal=(props) =>{
   const[modal, setModal]=useState(false)
+  const [testPosition,setTestPosition] = useState({top:0,left:0,display:'none'})
   
     
 
-  
+  const handleGrow = (event)=>{
+    const x = event.clientX;
+    const y = event.pageY;
+    setTestPosition({...testPosition,top:y,left:x,display:'block'})
+    setTimeout(()=>setTestPosition({...testPosition,display:'none'}),3200)
+}
   
   const toggle = () => {
       setModal(!modal)
     };
+
+  const HandleClick=()=>{
+      window.addEventListener("click",(event)=>{handleGrow(event)})
+      setTimeout(()=>setModal(!modal),3300)
+      return () => window.removeEventListener("click", handleGrow);
+    }
    
     
   const create = props.create;
@@ -86,16 +90,27 @@ const ProductDetailsModal=(props) =>{
 
   if (create) {
         const button = (
-          <ProductContainer onClick={toggle}>
+          <ProductContainer onClick={HandleClick}>
             <Circle>
               <ProductImg src={`${BASE_URL}${product.image}`} alt="product"/>
             </Circle> 
-            <div className='row product-text'>
+            <SmallCircle testPosition={testPosition} className='grow' />
+            {/* <div className='row product-text'>
               <div className='col-12 pull-left'><CardText>{props.descriptionDisplay(product.description)}</CardText></div>
-            </div>
+            </div> */}
             <Details>
-              <div className='product-text'>₦ {product.price}</div>
-              <div style={{marginLeft:'auto'}}>{product.quantity} left</div>
+              {/* <div className='product-text'>₦ {product.price}</div>
+              <div style={{marginLeft:'auto'}}>{product.quantity} left</div> */}
+              <div className="desc">
+                <p>{product.category}</p>
+                <div>
+                  {props.descriptionDisplay(product.description)}
+                </div>
+                <div className="amt">
+                    <div style={{color:'teal',fontSize:15}}>₦{product.price}</div>
+                    <div>{product.quantity} left</div>
+                </div>
+            </div>
             </Details>
             
           </ProductContainer>)
