@@ -524,8 +524,8 @@ width: 100%;
 }
 
 .grow{
-  -webkit-animation: fade 2s ease-in-out;
-  animation: glow 2s ease-in-out;
+  -webkit-animation: fade 1s ease-in-out;
+  animation: glow 1s ease-in-out;
 }
 
 

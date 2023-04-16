@@ -72,7 +72,7 @@ const ProductDetailsModal=(props) =>{
     // const y = event.pageY;
     const y = event.clientY-100;
     setTestPosition({...testPosition,top:y,left:x,display:'block'})
-    setTimeout(()=>setTestPosition({...testPosition,display:'none'}),2100)
+    setTimeout(()=>setTestPosition({...testPosition,display:'none'}),1100)
 }
   
   const toggle = () => {
@@ -81,7 +81,7 @@ const ProductDetailsModal=(props) =>{
 
   const HandleClick=()=>{
       window.addEventListener("click",(event)=>{handleGrow(event)})
-      setTimeout(()=>setModal(!modal),3300)
+      setTimeout(()=>setModal(!modal),1200)
       return () => window.removeEventListener("click", handleGrow);
     }
    
@@ -111,7 +111,7 @@ const ProductDetailsModal=(props) =>{
                   {props.descriptionDisplay(product.description)}
                 </div>
                 <div className="amt">
-                    <div style={{color:'#00FF00',fontSize:15}}>₦{product.price}</div>
+                    <div style={{color:'green',fontSize:15}}>₦{product.price}</div>
                     <div>{product.quantity} left</div>
                 </div>
             </div>
