@@ -70,7 +70,7 @@ const ProductDetailsModal=(props) =>{
   const handleGrow = (event)=>{
     const x = event.clientX;
     // const y = event.pageY;
-    const y = event.clientY;
+    const y = event.clientY-100;
     setTestPosition({...testPosition,top:y,left:x,display:'block'})
     setTimeout(()=>setTestPosition({...testPosition,display:'none'}),2100)
 }
