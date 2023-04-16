@@ -94,7 +94,7 @@ const Products = (props) => {
 
     
     return(
-        <Container style={{marginTop:'100px'}}>
+        <Container style={{marginTop:'120px'}}>
            
             <Row>
                 {!productValue.items || productValue.items.length<=0 ? (<div width='50%' height='80%' className="text-center"><img src='/loading.gif' alt='loading..' /></div>):
