@@ -111,7 +111,7 @@ const ProductDetailsModal=(props) =>{
                   {props.descriptionDisplay(product.description)}
                 </div>
                 <div className="amt">
-                    <div style={{color:'teal',fontSize:15}}>₦{product.price}</div>
+                    <div style={{color:'#00FF00',fontSize:15}}>₦{product.price}</div>
                     <div>{product.quantity} left</div>
                 </div>
             </div>
