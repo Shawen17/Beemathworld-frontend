@@ -98,7 +98,7 @@ const ProductDetailsModal=(props) =>{
             
             <Details>
               
-              <div className="desc">00
+              <div className="desc">
                 <p>{product.category}</p>
                 <div>
                   {props.descriptionDisplay(product.description)}
