@@ -31,6 +31,12 @@ const ProductContainer = styled.div`
     font-size: 13px;
     cursor:pointer;
     margin-bottom:15px;
+
+    &:hover{
+      transform: scale(1.1);
+      transition: all 0.5s ease;
+    }
+
 `
 const Details = styled.div`
 height:120px;
