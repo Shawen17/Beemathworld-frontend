@@ -69,9 +69,10 @@ const ProductDetailsModal=(props) =>{
 
   const handleGrow = (event)=>{
     const x = event.clientX;
-    const y = event.pageY;
+    // const y = event.pageY;
+    const y = event.clientY;
     setTestPosition({...testPosition,top:y,left:x,display:'block'})
-    setTimeout(()=>setTestPosition({...testPosition,display:'none'}),3200)
+    setTimeout(()=>setTestPosition({...testPosition,display:'none'}),2100)
 }
   
   const toggle = () => {
