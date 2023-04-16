@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import {useNavigate} from 'react-router-dom';
-import {ShoppingCartOutlined} from '@material-ui/icons';
-import { Badge } from '@material-ui/core';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Badge from '@mui/material/Badge';
 import styled from 'styled-components';
 import {BASE_URL} from './Url';
 require('dotenv').config()
@@ -128,7 +128,7 @@ const CartDetailsModal =(props) => {
             <div
               onClick={toggleModal}
             >
-              <Badge badgeContent={props.count} color='primary' overlap="rectangular"><ShoppingCartOutlined /> </Badge>
+              <Badge badgeContent={props.count} color='primary' overlap="rectangular"><ShoppingCartOutlinedIcon /> </Badge>
             </div>
         );
       }

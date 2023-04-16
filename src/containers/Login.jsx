@@ -4,7 +4,8 @@ import {Form} from 'reactstrap';
 import {connect} from 'react-redux';
 import { login } from '../actions/auth';
 import {SearchContainer} from '../components/NavBar';
-import {LockOutlined,MailOutlined} from '@material-ui/icons';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import styled from 'styled-components';
 import { Container,Title,FormDisplay } from './ContactUs';
 
@@ -92,11 +93,11 @@ const Login = ({login,isAuthenticated,loginFailed}) => {
                     
                     <SearchContainer className="mt-3" style={{width:'100%'}}>
                         <Input placeholder ='abc@example.com' name='email' value={inputValues.email || ""} type='email' onChange={HandleChange} />
-                        <MailOutlined />
+                        <MailOutlineOutlinedIcon />
                     </SearchContainer>
                     <SearchContainer className="mt-3" style={{width:'100%'}}>
                         <Input placeholder='password' name='password' value={inputValues.password || ""} type='password' onChange={HandleChange} />
-                        <LockOutlined />
+                        <LockOutlinedIcon />
                     </SearchContainer>
                     <div style={buttonStyle2} >
                         

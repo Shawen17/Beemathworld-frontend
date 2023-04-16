@@ -90,7 +90,7 @@ const Products = (props) => {
             const firstPageIndex = (currentPage - 1) * PageSize;
             const lastPageIndex = firstPageIndex + PageSize;
             return filteredProduct.slice(firstPageIndex, lastPageIndex);
-          }, [currentPage,props.searchValue,productValue]); 
+          }, [currentPage,filteredProduct]); 
 
     
     return(

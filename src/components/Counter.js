@@ -1,5 +1,6 @@
 import React from "react";
-import {Add,Remove} from '@material-ui/icons';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
 
 
@@ -10,7 +11,7 @@ const Counter = (props)=>{
     
     return(
             <div>
-                <span className="counter mb-3"><button className="counter-button" onClick={()=>{props.decrement(props.count)}}><Remove /></button><span style={{padding:6}}> {props.count} </span>{quantityLimit?(<button className="counter-button" onClick={()=> {props.increment(props.count)}}> <Add /> </button>):(<button style={{borderRadius:4,backgroundColor:'grey'}} disabled><Add /></button>)}<span> ({props.count} items(s) added) </span></span>
+                <span className="counter mb-3"><button className="counter-button" onClick={()=>{props.decrement(props.count)}}><RemoveIcon /></button><span style={{padding:6}}> {props.count} </span>{quantityLimit?(<button className="counter-button" onClick={()=> {props.increment(props.count)}}> <AddIcon /> </button>):(<button style={{borderRadius:4,backgroundColor:'grey'}} disabled><AddIcon /></button>)}<span> ({props.count} items(s) added) </span></span>
             </div>
         )
     }

@@ -2,7 +2,8 @@ import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {Search,Menu} from '@material-ui/icons';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CartDetailsModal from './CartDetailsModal';
 import {logout, fetchCart} from '../actions/auth';
 import axios from "axios";
@@ -46,6 +47,7 @@ const Input = styled.input`
       type: text;
       border:none;
       width:95%;
+      background-color:transparent;
       border-style:none;
       &:focus {
         outline:none;
@@ -99,11 +101,11 @@ const NavBar =(props)=> {
     setDel(!del)
 }
 
-
+const fetchCart=props.fetchCart
   useEffect(()=>{
     
-    props.fetchCart(email);
-  },[cart,del])
+    fetchCart(email);
+  },[cart,del,email,fetchCart])
 
   const onLogout = ()=>{
     props.logout()
@@ -132,13 +134,13 @@ const NavBar =(props)=> {
               <div className='navigation-menu' >
                   <SearchContainer>
                       <Input placeholder="search category, product.." value={searchValue}  onChange={HandleInputChange} /> 
-                      <Search style={{ fontSize:16,color:'gray'}} />
+                      <SearchOutlinedIcon style={{ fontSize:16,color:'gray'}} />
                   </SearchContainer>
                   <NavMenu onLogout={onLogout}/>
               </div>
 
               <div className='hamburger' onClick={toggleModal}>
-                <Menu  />
+                <MenuOutlinedIcon  />
               </div>
               <CartItem>
                 <CartDetailsModal
@@ -155,7 +157,7 @@ const NavBar =(props)=> {
             <div className='menu-appear' >
               <SearchContainer className='search-con'>
                 <Input placeholder="search category, Product.." value={searchValue}  onChange={HandleInputChange} /> 
-                <Search style={{ fontSize:16,color:'gray'}} />
+                <SearchOutlinedIcon style={{ fontSize:16,color:'gray'}} />
               </SearchContainer>
               <NavMenu  onLogout={onLogout}/>
             </div>

@@ -10,7 +10,7 @@ const Layout = (props) =>{
     useEffect( () => {
         props.checkIsAuthenticated();
         props.load_user();
-    }, [])
+    },)
 
     return(
         <div style={{position: 'relative',margin:'4px'}}>

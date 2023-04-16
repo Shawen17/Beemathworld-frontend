@@ -84,7 +84,7 @@ const ProductCategory =(props)=> {
             return product.category.includes(category)
         })
         return filtered
-    },[products])
+    },[products,category])
 
     
 

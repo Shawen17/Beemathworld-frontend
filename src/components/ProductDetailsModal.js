@@ -89,19 +89,16 @@ const ProductDetailsModal=(props) =>{
   }
 
   if (create) {
-        const button = (
+        var button = (
           <ProductContainer onClick={HandleClick}>
             <Circle>
               <ProductImg src={`${BASE_URL}${product.image}`} alt="product"/>
             </Circle> 
             <SmallCircle testPosition={testPosition} className='grow' />
-            {/* <div className='row product-text'>
-              <div className='col-12 pull-left'><CardText>{props.descriptionDisplay(product.description)}</CardText></div>
-            </div> */}
+            
             <Details>
-              {/* <div className='product-text'>₦ {product.price}</div>
-              <div style={{marginLeft:'auto'}}>{product.quantity} left</div> */}
-              <div className="desc">
+              
+              <div className="desc">00
                 <p>{product.category}</p>
                 <div>
                   {props.descriptionDisplay(product.description)}
@@ -114,6 +111,7 @@ const ProductDetailsModal=(props) =>{
             </Details>
             
           </ProductContainer>)
+      
       
   return (
         <Fragment>

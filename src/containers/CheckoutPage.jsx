@@ -53,7 +53,7 @@ const CheckoutPage=(props)=>{
     const email = localStorage.getItem('email')
     const items = sessionStorage.getItem('products')
 
-    console.log('email:',email,'items:',items)
+    
     
     const productAmount=locations.items.amount.total
     const amount = parseInt(productAmount)
@@ -94,7 +94,7 @@ const CheckoutPage=(props)=>{
             axios.put(`${BASE_URL}/api/checkout/`, body, config).then(res => 
                 setLocations({items:res.data})
            )
-    }},[])
+    }},)
     
     const handleChecked = (e) =>{
         setChecked(e.target.checked) 

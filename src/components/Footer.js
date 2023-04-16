@@ -1,9 +1,8 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import {Twitter} from  '@material-ui/icons';
-import {Instagram} from '@material-ui/icons';
-
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Left = styled.div`
 flex:30%;
@@ -122,10 +121,10 @@ const Footer = () => {
                 <FootItem><Link className="nav-link" to='/about-us'>About us</Link></FootItem>
                 <SocialContainer>
                     <SocialIcon color='#55ACEE'>
-                        <Twitter />
-                    </SocialIcon>
+                        <TwitterIcon />
+                    </SocialIcon> 
                     <SocialIcon  color='#E4405F'>
-                        <a style={{color:'white'}} target='_blank' rel="noopener noreferrer" href='https://www.instagram.com/beemathworld' ><Instagram /></a>
+                        <a style={{color:'white'}} target='_blank' rel="noopener noreferrer" href='https://www.instagram.com/beemathworld' ><InstagramIcon /></a>
                     </SocialIcon>
                 </SocialContainer>
             </Center>

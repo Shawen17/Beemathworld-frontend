@@ -108,7 +108,7 @@ const DashBoard = (props) =>{
                         navigate('/login')
                 }});
                 
-        },[])
+        },)
 
 
         const recentOrders = [...orders.items.products]
