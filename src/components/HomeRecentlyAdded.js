@@ -211,7 +211,7 @@ const HomeRecentlyAdded =(props)=> {
             <h5><span className='pull-left' style={{fontWeight:'bold',marginLeft:'5px'}}>Top selling items</span></h5>
             <TopCon>
                 
-                {!products.items.top || products.items.top.length<=0 ? (<div width='50%' height='80%' className="text-center"><img src='/loading.gif' alt='loading..' /></div>):
+                {topSelling &&
                         (topSelling.map(product=> (
                     <TopImg key={product.id}> 
                         
