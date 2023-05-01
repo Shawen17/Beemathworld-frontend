@@ -44,7 +44,7 @@ const Desc = styled.p`
 const Button = styled.button`
     padding: 10px;
     font-size:20px;
-    background-color: transparent;
+    background-color: white;
     cursor:pointer;
 `
 
@@ -58,6 +58,8 @@ const InfoContainer = styled.div`
     height:100%;
     width:100%;
     padding:35px;
+    background-color:black;
+    color:white;
 `
 const Image = styled.img`
     height:100%;
