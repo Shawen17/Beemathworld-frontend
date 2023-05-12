@@ -70,6 +70,7 @@ export default function foo(state = initialState, action) {
     case USER_LOADED_FAIL:
       return {
         ...state,
+        isAuthenticated: false,
         user: null,
       };
     case AUTHENTICATION_SUCCESS:
