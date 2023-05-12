@@ -10,6 +10,7 @@ import Pagination from "../components/Pagination";
 import { descriptionDisplay } from "./Products";
 import styled from "styled-components";
 import { BASE_URL } from "../components/Url";
+import { unique } from "../components/utility/Utility";
 require("dotenv").config();
 
 const Items = styled.div`
@@ -128,6 +129,7 @@ const DashBoard = (props) => {
   });
 
   const recentOrders = [...orders.items.products];
+  const uniqueRecentOrders = unique(recentOrders);
 
   const increment = (num) => {
     setCount(num + 1);
@@ -241,13 +243,14 @@ const DashBoard = (props) => {
               <h4>start making orders</h4>
             </div>
           ) : (
-            recentOrders.slice(0, 6).map((product) => (
+            uniqueRecentOrders.slice(0, 6).map((product) => (
               <Col xs="6" sm="4" md="3" lg="2" key={product.id}>
                 <div className="cardStyle">
                   <ProductDetailsModal
                     key={product.id}
                     create={true}
                     product={product}
+                    allProducts={recentOrders}
                     resetState={props.resetState}
                     descriptionDisplay={descriptionDisplay}
                     HandleButtonClick={HandleButtonClick}

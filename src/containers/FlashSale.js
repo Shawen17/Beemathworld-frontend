@@ -9,6 +9,7 @@ import { descriptionDisplay } from "./Products";
 import Pagination from "../components/Pagination";
 import styled from "styled-components";
 import { BASE_URL } from "../components/Url";
+import { unique } from "../components/utility/Utility";
 
 require("dotenv").config();
 let PageSize = 6;
@@ -99,11 +100,13 @@ const FlashSale = (props) => {
     return products.items.sales;
   }, [products]);
 
+  const uniqueFlashSale = unique(flashSale);
+
   const currentData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return flashSale.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, flashSale]);
+    return uniqueFlashSale.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, uniqueFlashSale]);
 
   const flashSaleHeader = () => (
     <Title>
@@ -127,6 +130,7 @@ const FlashSale = (props) => {
                 key={product.id}
                 create={true}
                 product={product}
+                allProducts={flashSale}
                 descriptionDisplay={descriptionDisplay}
                 HandleButtonClick={HandleButtonClick}
                 count={count}

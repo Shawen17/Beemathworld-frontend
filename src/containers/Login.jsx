@@ -104,12 +104,16 @@ const Login = ({ login, isAuthenticated, loginFailed }) => {
           </div>
         </Form>
         <Outline>
-          <Link className="nav-link mt-5" to="/signup">
+          <Link
+            className="signup-link mt-5"
+            style={{ marginLeft: 0 }}
+            to="/signup"
+          >
             New User? Signup
           </Link>
           <p style={{ display: "flex" }} className="mt-3">
             Forgot Password?{" "}
-            <Link className="nav-link" to="/reset-password">
+            <Link className="signup-link" to="/reset-password">
               Reset Password
             </Link>
           </p>

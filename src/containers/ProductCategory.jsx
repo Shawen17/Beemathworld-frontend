@@ -80,11 +80,18 @@ const ProductCategory = (props) => {
     return filtered;
   }, [products, category]);
 
+  const uniqueProducts = filteredProducts.filter(
+    (elem, index) =>
+      filteredProducts.findIndex(
+        (obj) => obj.description === elem.description
+      ) === index
+  );
+
   const currentData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return filteredProducts.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, filteredProducts]);
+    return uniqueProducts.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, uniqueProducts]);
 
   return (
     <div className="container-fluid" style={{ marginTop: "110px" }}>
@@ -102,6 +109,7 @@ const ProductCategory = (props) => {
                 key={product.id}
                 create={true}
                 product={product}
+                allProducts={filteredProducts}
                 descriptionDisplay={descriptionDisplay}
                 HandleButtonClick={HandleButtonClick}
                 count={count}

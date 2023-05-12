@@ -82,11 +82,18 @@ const Products = (props) => {
     });
   }
 
+  const uniqueProducts = filteredProduct.filter(
+    (elem, index) =>
+      filteredProduct.findIndex(
+        (obj) => obj.description === elem.description
+      ) === index
+  );
+
   const currentData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return filteredProduct.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, filteredProduct]);
+    return uniqueProducts.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, uniqueProducts]);
 
   return (
     <Container style={{ marginTop: "120px" }}>
@@ -103,6 +110,7 @@ const Products = (props) => {
                   key={product.id}
                   create={true}
                   product={product}
+                  allProducts={filteredProduct}
                   resetState={props.resetState}
                   descriptionDisplay={descriptionDisplay}
                   HandleButtonClick={HandleButtonClick}
@@ -118,7 +126,7 @@ const Products = (props) => {
       <Pagination
         className="pagination mt-5"
         currentPage={currentPage}
-        totalCount={filteredProduct.length}
+        totalCount={uniqueProducts.length}
         pageSize={PageSize}
         onPageChange={(page) => setCurrentPage(page)}
       />

@@ -10,6 +10,7 @@ import { descriptionDisplay } from "../containers/Products";
 import styled from "styled-components";
 import ProductHome from "./ProductHome";
 import { BASE_URL } from "./Url";
+import { unique } from "./utility/Utility";
 
 require("dotenv").config();
 
@@ -146,9 +147,13 @@ const HomeRecentlyAdded = (props) => {
     return products.items.top;
   }, [products]);
 
+  const uniqueTopselling = unique(topSelling);
+
   const flashSale = useMemo(() => {
-    return products.items.sales.slice(0, 6);
+    return products.items.sales;
   }, [products]);
+
+  const uniqueFlashSale = unique(flashSale);
 
   const Kitchen = useMemo(() => {
     const filtered = products.items.all.filter(function (product) {
@@ -229,11 +234,12 @@ const HomeRecentlyAdded = (props) => {
         </h5>
         <TopCon>
           {topSelling &&
-            topSelling.map((product) => (
+            uniqueTopselling.map((product) => (
               <TopImg key={product.id}>
                 <ProductHome
                   create={true}
                   product={product}
+                  allProducts={topSelling}
                   descriptionDisplay={descriptionDisplay}
                   HandleButtonClick={HandleButtonClick}
                   count={count}
@@ -364,12 +370,13 @@ const HomeRecentlyAdded = (props) => {
             <img src="/loading.gif" alt="loading.." />
           </div>
         ) : (
-          flashSale.map((product) => (
+          uniqueFlashSale.slice(0, 6).map((product) => (
             <TopImg key={product.id}>
               <ProductHome
                 key={product.id}
                 create={true}
                 product={product}
+                allProducts={flashSale}
                 descriptionDisplay={descriptionDisplay}
                 HandleButtonClick={HandleButtonClick}
                 count={count}

@@ -465,6 +465,13 @@ ul {
   }
 }
 
+.signup-link {
+  color: #18a558;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
 .wrapper {
   position: relative;
   margin: 0;
@@ -571,4 +578,26 @@ ul {
   100% {
     opacity: 0;
   }
+}
+
+.multi-counter {
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  background-color: #d3d3d3;
+}
+
+.multi-counter:hover {
+  color: white;
+  background-color: teal;
+  border-radius: 5px;
+}
+
+.wrapper-button {
+  border: none;
+  background-color: #18a558;
+  margin: 3px;
+  font-size: 13px;
+  border-radius: 6px;
 }

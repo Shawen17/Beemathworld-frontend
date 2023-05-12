@@ -13,6 +13,11 @@ import Counter from "./Counter";
 import styled from "styled-components";
 import VideoPlayer from "react-simple-video-player";
 import { BASE_URL } from "./Url";
+import { Variant } from "./Variant";
+import { getVariants, productTotal } from "./utility/Utility";
+import { useNavigate } from "react-router-dom";
+import { addMultiToCart } from "../actions/auth";
+import { connect } from "react-redux";
 
 const Circle = styled.div`
   display: flex;
@@ -87,6 +92,12 @@ const Details = styled.div`
 `;
 
 const ProductHome = (props) => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("access");
+  const email = localStorage.getItem("email");
+  const [count, setCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
+  const [pickedProducts, setPickedProducts] = useState({});
   const [modal, setModal] = useState(false);
 
   const toggle = () => {
@@ -95,6 +106,70 @@ const ProductHome = (props) => {
 
   const create = props.create;
   const product = props.product;
+  const allProducts = props.allProducts;
+
+  const multiIncrement = (num, item) => {
+    setCount(num + 1);
+    if (num + 1 > 0) {
+      const product = { ...item, quantity: num + 1 };
+      setPickedProducts(product);
+      updateCart(product);
+    }
+  };
+
+  const multiDecrement = (num, item) => {
+    setCount(num - 1);
+    if (num > 0) {
+      const product = { ...item, quantity: num - 1 };
+      setPickedProducts(product);
+      updateCart(product);
+    }
+  };
+
+  const updateCart = (cart) => {
+    if (cartItems.length > 0) {
+      const index = cartItems.findIndex((ele) => {
+        if (ele.id === cart.id) {
+          return true;
+        }
+        return false;
+      });
+      if (index !== -1) {
+        const items = [...cartItems];
+        items[index] = cart;
+        setCartItems(items);
+      } else {
+        const items = [...cartItems];
+        items.push(cart);
+        setCartItems(items);
+      }
+    } else {
+      cartItems.push(cart);
+      setCartItems(cartItems);
+    }
+  };
+
+  const addMultiProduct = async (products, toggle) => {
+    const finalProduct = products.filter((product) => {
+      return product.quantity !== 0;
+    });
+    if (token != null) {
+      if (finalProduct.length > 0) {
+        await props.addMultiToCart(email, finalProduct);
+        alert(
+          `${finalProduct.length} ${finalProduct[0].description}(s) added to cart`
+        );
+        setCount(0);
+        setCartItems([]);
+        setPickedProducts({});
+        toggle();
+      }
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const productQuantity = productTotal(allProducts, product.description);
 
   const cardStyle = {
     margin: "8px",
@@ -118,7 +193,7 @@ const ProductHome = (props) => {
           </div>
           <Details>
             <Price>₦ {product.price}</Price>
-            <Qty>{product.quantity} left</Qty>
+            <Qty>{productQuantity} left</Qty>
           </Details>
         </ProductContainer>
       </div>
@@ -157,20 +232,52 @@ const ProductHome = (props) => {
                   <CardSubtitle>{product.description}</CardSubtitle>
                   <CardText>{product.category}</CardText>
                   <p>{product.detail}</p>
-                  <Counter
-                    decrement={props.decrement}
-                    increment={props.increment}
-                    count={props.count}
-                    quantity={product.quantity}
-                  />
-                  <button
-                    className="add-cart"
-                    onClick={() => {
-                      props.HandleButtonClick(product, toggle);
-                    }}
-                  >
-                    Add to cart
-                  </button>
+                  {product.variant ? (
+                    <div>
+                      <h3>Variants</h3>
+                      {getVariants(allProducts, product.description).map(
+                        (item, index) => (
+                          <div key={index}>
+                            <Variant
+                              key={index}
+                              cartItems={cartItems}
+                              pickedProducts={pickedProducts}
+                              multiIncrement={multiIncrement}
+                              multiDecrement={multiDecrement}
+                              count={count}
+                              item={item}
+                              quantity={item.quantity}
+                            />
+                          </div>
+                        )
+                      )}
+                      <button
+                        className="add-cart"
+                        onClick={() => {
+                          addMultiProduct(cartItems, toggle);
+                        }}
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <Counter
+                        decrement={props.decrement}
+                        increment={props.increment}
+                        count={props.count}
+                        quantity={product.quantity}
+                      />
+                      <button
+                        className="add-cart"
+                        onClick={() => {
+                          props.HandleButtonClick(product, toggle);
+                        }}
+                      >
+                        Add to cart
+                      </button>
+                    </div>
+                  )}
                 </CardBody>
               </Card>
             </Container>
@@ -181,4 +288,4 @@ const ProductHome = (props) => {
   }
 };
 
-export default ProductHome;
+export default connect(null, { addMultiToCart })(ProductHome);

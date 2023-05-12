@@ -102,11 +102,10 @@ const CartDetailsModal = (props) => {
       );
     }
     items = items.join(", ");
-    sessionStorage.setItem("products", items);
 
     setToggle({ modal: !toggle.modal });
 
-    navigate("/checkout");
+    navigate("/checkout", { state: items });
   };
 
   const create = props.create;

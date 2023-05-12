@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Table } from "reactstrap";
 import { PaystackButton } from "react-paystack";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { checkout } from "../actions/auth";
 import { connect } from "react-redux";
 import { Container, Title, FormDisplay } from "./ContactUs";
@@ -25,6 +25,7 @@ const Info = styled.div`
 require("dotenv").config();
 
 const CheckoutPage = (props) => {
+  const location = useLocation();
   const [clicked, setClicked] = useState(false);
   const [checked, setChecked] = useState(false);
   const [inputs, setInputs] = useState({});
@@ -47,7 +48,7 @@ const CheckoutPage = (props) => {
   );
 
   const email = localStorage.getItem("email");
-  const items = sessionStorage.getItem("products");
+  const items = location.state;
 
   const productAmount = locations.items.amount.total;
   const amount = parseInt(productAmount);
@@ -65,28 +66,24 @@ const CheckoutPage = (props) => {
 
   const navigate = useNavigate();
 
-  const body = JSON.stringify({ email: email });
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `JWT ${localStorage.getItem("access")}`,
-      Accept: "application/json",
-    },
-  };
-
   useEffect(() => {
+    const body = JSON.stringify({ email: email });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+        Accept: "application/json",
+      },
+    };
     axios
       .put(`${BASE_URL}/api/checkout/`, body, config)
       .then((res) => setLocations({ items: res.data }));
-    return () => {
-      axios
-        .put(`${BASE_URL}/api/checkout/`, body, config)
-        .then((res) => setLocations({ items: res.data }));
-    };
-  });
+  }, [email]);
 
   const handleChecked = (e) => {
-    setChecked(e.target.checked);
+    if (inputs.select) {
+      setChecked(e.target.checked);
+    }
   };
 
   const handleChange = (event) => {
@@ -122,10 +119,8 @@ const CheckoutPage = (props) => {
         },
       };
       axios.post(`${BASE_URL}/api/initiate-payment/`, body, config);
-      props.checkout();
-
       alert("Thanks for doing business with us! Come back soon!!");
-
+      props.checkout();
       navigate("/products");
     },
 

@@ -20,6 +20,7 @@ import {
   CART_ADDED_FAIL,
 } from "./types";
 import axios from "axios";
+import { extractIds } from "../components/utility/Utility";
 
 require("dotenv").config();
 
@@ -332,4 +333,52 @@ export const checkout = () => async (dispatch) => {
   dispatch({
     type: CART_ADDED_FAIL,
   });
+};
+
+export const addMultiToCart = (email, product) => async (dispatch) => {
+  if (localStorage.getItem("access")) {
+    const [productIds, counts] = extractIds(product);
+    const body = JSON.stringify({
+      product_id: productIds,
+      email: email,
+      quantity: counts,
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+        Accept: "application/json",
+      },
+    };
+    try {
+      const res = await axios.put(
+        `${process.env.REACT_APP_GIVEAWAYNOW_API_URL}/api/update/multicart/`,
+        body,
+        config
+      );
+      if (res.data.code !== "token_not_valid") {
+        dispatch({
+          type: CART_ADDED_SUCCESS,
+          payload: res.data,
+        });
+        dispatch(fetchCart(localStorage.getItem("email")));
+      } else {
+        dispatch({
+          type: CART_ADDED_FAIL,
+        });
+      }
+    } catch (err) {
+      if (err.response.status === 401) {
+        dispatch(logout());
+      } else if (err.response.status === 400) {
+        alert(`only ${product.quantity} of this item is left`);
+      } else {
+        alert("this item is no longer available");
+      }
+    }
+  } else {
+    dispatch({
+      type: CART_ADDED_FAIL,
+    });
+  }
 };
