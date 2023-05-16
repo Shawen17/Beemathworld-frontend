@@ -202,7 +202,7 @@ const ProductDetailsModal = (props) => {
             <div>{props.descriptionDisplay(product.description)}</div>
             <div className="amt">
               <div style={{ color: "green", fontSize: 15 }}>
-                ₦{product.price}
+                ₦{product.price.toLocaleString()}
               </div>
               <div>{productQuantity} left</div>
             </div>

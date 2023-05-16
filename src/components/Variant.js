@@ -11,6 +11,9 @@ export const Variant = (props) => {
       }}
     >
       <button className="wrapper-button">{props.item.variant}</button>
+      <div>
+        <b>₦{props.item.price.toLocaleString()}</b>
+      </div>
       <MultiCounter
         cartItems={props.cartItems}
         pickedProducts={props.pickedProducts}
