@@ -162,12 +162,16 @@ const HomeRecentlyAdded = (props) => {
     return filtered;
   }, [products]);
 
+  const uniqueKitchen = unique(Kitchen);
+
   const Bathroom = useMemo(() => {
     const filtered = products.items.all.filter(function (product) {
       return product.category.includes("bathroom");
     });
     return filtered;
   }, [products]);
+
+  const uniqueBathroom = unique(Bathroom);
 
   const Electronics = useMemo(() => {
     const filtered = products.items.all.filter(function (product) {
@@ -176,12 +180,16 @@ const HomeRecentlyAdded = (props) => {
     return filtered;
   }, [products]);
 
+  const uniqueElectronics = unique(Electronics);
+
   const Household = useMemo(() => {
     const filtered = products.items.all.filter(function (product) {
       return product.category.includes("household-accessories");
     });
     return filtered;
   }, [products]);
+
+  const uniqueHousehold = unique(Household);
 
   const flashSaleHeader = () => (
     <div id="fsh-sale">
@@ -267,7 +275,7 @@ const HomeRecentlyAdded = (props) => {
                 <img src="/loading.gif" alt="loading.." />
               </div>
             ) : (
-              Electronics.slice(0, 6).map((product) => (
+              uniqueElectronics.slice(0, 6).map((product) => (
                 <Img key={product.id}>
                   <ProductCat product={product} />
                 </Img>
@@ -295,7 +303,7 @@ const HomeRecentlyAdded = (props) => {
                 <img src="/loading.gif" alt="loading.." />
               </div>
             ) : (
-              Household.slice(0, 6).map((product) => (
+              uniqueHousehold.slice(0, 6).map((product) => (
                 <Img key={product.id}>
                   <ProductCat product={product} />
                 </Img>
@@ -323,7 +331,7 @@ const HomeRecentlyAdded = (props) => {
                 <img src="/loading.gif" alt="loading.." />
               </div>
             ) : (
-              Kitchen.slice(0, 6).map((product) => (
+              uniqueKitchen.slice(0, 6).map((product) => (
                 <Img key={product.id}>
                   <ProductCat product={product} />
                 </Img>
@@ -351,7 +359,7 @@ const HomeRecentlyAdded = (props) => {
                 <img src="/loading.gif" alt="loading.." />
               </div>
             ) : (
-              Bathroom.slice(0, 6).map((product) => (
+              uniqueBathroom.slice(0, 6).map((product) => (
                 <Img key={product.id}>
                   <ProductCat product={product} />
                 </Img>
