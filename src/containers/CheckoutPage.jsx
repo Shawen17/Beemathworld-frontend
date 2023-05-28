@@ -32,7 +32,14 @@ const CheckoutPage = (props) => {
   const [locations, setLocations] = useState({
     items: {
       areas: [
-        { id: 0, state: "", city: "", charge: 0, door_delivery_charge: 0 },
+        {
+          id: 0,
+          state: "",
+          city: "",
+          charge: 0,
+          door_delivery_charge: 0,
+          zone: "",
+        },
       ],
       amount: 0,
     },
@@ -47,6 +54,13 @@ const CheckoutPage = (props) => {
     (area) => area.state === user_state
   );
 
+  let filtredCity = filteredLocations.filter(
+    (city) => city.city === inputs.select
+  );
+  if (inputs.select) {
+    var logistics = filtredCity[0].charge;
+  }
+
   const email = localStorage.getItem("email");
   const items = location.state;
 
@@ -54,14 +68,11 @@ const CheckoutPage = (props) => {
   const amount = parseInt(productAmount);
 
   if (checked) {
-    const userCity = filteredLocations.filter(
-      (city) => city.charge === parseInt(inputs.select)
-    );
+    var door_delivery = filtredCity[0].door_delivery_charge;
 
-    var door_delivery = userCity[0].door_delivery_charge;
-    total = amount + parseInt(inputs.select) + door_delivery;
+    total = amount + parseInt(logistics) + door_delivery;
   } else {
-    total = amount + parseInt(inputs.select);
+    total = amount + parseInt(logistics);
   }
 
   const navigate = useNavigate();
@@ -109,6 +120,7 @@ const CheckoutPage = (props) => {
         contact_number: inputs.phone,
         amount: total,
         item: items,
+        zone: filtredCity[0].zone,
       });
 
       const config = {
@@ -138,8 +150,6 @@ const CheckoutPage = (props) => {
     marginRight: "3px",
   };
 
-  const logistics = inputs.select;
-
   const deliveryDetailView = (
     <div>
       <Title> Provide delivery details </Title>
@@ -163,7 +173,7 @@ const CheckoutPage = (props) => {
       >
         <option value="">select city</option>
         {filteredLocations.map((location) => (
-          <option key={location.id} value={location.charge}>
+          <option key={location.id} value={location.city}>
             {location.city}
           </option>
         ))}
@@ -186,7 +196,9 @@ const CheckoutPage = (props) => {
             value={inputs.check || false}
             onChange={handleChecked}
           />
-          <Info>door-delivery(attracts additional charges)</Info>
+          <Info>
+            door-delivery(attracts additional charges but currently unavailable)
+          </Info>
         </CheckInine>
       ) : (
         ""
