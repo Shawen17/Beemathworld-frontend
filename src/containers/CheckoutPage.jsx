@@ -61,6 +61,9 @@ const CheckoutPage = (props) => {
     var logistics = filtredCity[0].charge;
   }
 
+  console.log("filteredLocation", filteredLocations);
+  console.log("filteredCity", filtredCity);
+
   const email = localStorage.getItem("email");
   const items = location.state;
 
@@ -187,7 +190,7 @@ const CheckoutPage = (props) => {
         onChange={handleChange}
         required
       />
-      {user_state !== "lagos" ? (
+      {user_state !== "Lagos" ? (
         <CheckInine>
           <Input
             type="checkbox"
