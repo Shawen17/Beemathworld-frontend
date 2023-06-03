@@ -220,7 +220,7 @@ const ProductDetailsModal = (props) => {
           <ModalBody>
             <Container>
               <Card style={cardStyle}>
-                {product.videofile ? (
+                {product.video ? (
                   <div className="m-auto align-self-center">
                     <h6>how it works</h6>
                     <VideoPlayer
