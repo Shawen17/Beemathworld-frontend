@@ -51,7 +51,7 @@ const CheckoutPage = (props) => {
   var total;
 
   let filteredLocations = locations.items.areas.filter(
-    (area) => area.state === user_state
+    (area) => area.state === user_state.toLowerCase()
   );
 
   let filtredCity = filteredLocations.filter(
