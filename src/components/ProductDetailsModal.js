@@ -224,7 +224,7 @@ const ProductDetailsModal = (props) => {
                   <div className="m-auto align-self-center">
                     <h6>how it works</h6>
                     <VideoPlayer
-                      url={`${BASE_URL}${product.videofile}`}
+                      url={`${BASE_URL}${product.video}`}
                       poster={`${BASE_URL}${product.image}`}
                       width={210}
                       height={210}
