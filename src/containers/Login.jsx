@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { Form } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../actions/auth";
@@ -54,8 +53,8 @@ const Login = ({ login, isAuthenticated, loginFailed }) => {
     const value = event.target.value;
     setValues((values) => ({ ...values, [name]: value.trim() }));
   };
-  const history = useHistory();
-  // const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -66,7 +65,7 @@ const Login = ({ login, isAuthenticated, loginFailed }) => {
 
   if (isAuthenticated) {
     // navigate("/products");
-    history.goBack();
+    navigate(-1);
   }
 
   const formDisplay = {
