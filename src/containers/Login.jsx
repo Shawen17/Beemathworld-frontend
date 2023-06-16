@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { Form } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../actions/auth";
