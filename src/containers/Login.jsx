@@ -8,6 +8,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import styled from "styled-components";
 import { Container, Title, FormDisplay } from "./ContactUs";
+import { motion } from "framer-motion";
 
 const Input = styled.input`
   type: ${(props) => props.type};
@@ -73,54 +74,64 @@ const Login = ({ login, isAuthenticated, loginFailed }) => {
   };
 
   return (
-    <Container>
-      <Title> Login to your account </Title>
-      {loginFailed ? <div>Username or Password incorrect</div> : ""}
-      <FormDisplay style={{ justifyContent: "center" }}>
-        <Form style={formDisplay} onSubmit={HandleSubmit}>
-          <SearchContainer className="mt-3" style={{ width: "100%" }}>
-            <Input
-              placeholder="abc@example.com"
-              name="email"
-              value={inputValues.email || ""}
-              type="email"
-              onChange={HandleChange}
-            />
-            <MailOutlineOutlinedIcon />
-          </SearchContainer>
-          <SearchContainer className="mt-3" style={{ width: "100%" }}>
-            <Input
-              placeholder="password"
-              name="password"
-              value={inputValues.password || ""}
-              type="password"
-              onChange={HandleChange}
-            />
-            <LockOutlinedIcon />
-          </SearchContainer>
-          <div style={buttonStyle2}>
-            <button className="login-button" type="submit">
-              Login
-            </button>
-          </div>
-        </Form>
-        <Outline>
-          <Link
-            className="signup-link mt-5"
-            style={{ marginLeft: 0 }}
-            to="/signup"
-          >
-            New User? Signup
-          </Link>
-          <p style={{ display: "flex" }} className="mt-3">
-            Forgot Password?{" "}
-            <Link className="signup-link" to="/reset-password">
-              Reset Password
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+    >
+      <Container>
+        <Title> Login to your account </Title>
+        {loginFailed ? <div>Username or Password incorrect</div> : ""}
+        <FormDisplay style={{ justifyContent: "center" }}>
+          <Form style={formDisplay} onSubmit={HandleSubmit}>
+            <SearchContainer className="mt-3" style={{ width: "100%" }}>
+              <Input
+                placeholder="abc@example.com"
+                name="email"
+                value={inputValues.email || ""}
+                type="email"
+                onChange={HandleChange}
+              />
+              <MailOutlineOutlinedIcon />
+            </SearchContainer>
+            <SearchContainer className="mt-3" style={{ width: "100%" }}>
+              <Input
+                placeholder="password"
+                name="password"
+                value={inputValues.password || ""}
+                type="password"
+                onChange={HandleChange}
+              />
+              <LockOutlinedIcon />
+            </SearchContainer>
+            <div style={buttonStyle2}>
+              <button className="login-button" type="submit">
+                Login
+              </button>
+            </div>
+          </Form>
+          <Outline>
+            <Link
+              className="signup-link mt-5"
+              style={{ marginLeft: 0 }}
+              to="/signup"
+            >
+              New User? Signup
             </Link>
-          </p>
-        </Outline>
-      </FormDisplay>
-    </Container>
+            <p style={{ display: "flex" }} className="mt-3">
+              Forgot Password?{" "}
+              <Link className="signup-link" to="/reset-password">
+                Reset Password
+              </Link>
+            </p>
+          </Outline>
+        </FormDisplay>
+      </Container>
+    </motion.div>
   );
 };
 

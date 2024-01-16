@@ -161,7 +161,6 @@ const HomeRecentlyAdded = (props) => {
     });
     return filtered;
   }, [products]);
-
   const uniqueKitchen = unique(Kitchen);
 
   const Bathroom = useMemo(() => {
@@ -170,7 +169,6 @@ const HomeRecentlyAdded = (props) => {
     });
     return filtered;
   }, [products]);
-
   const uniqueBathroom = unique(Bathroom);
 
   const Electronics = useMemo(() => {
@@ -179,7 +177,6 @@ const HomeRecentlyAdded = (props) => {
     });
     return filtered;
   }, [products]);
-
   const uniqueElectronics = unique(Electronics);
 
   const Household = useMemo(() => {
@@ -188,7 +185,6 @@ const HomeRecentlyAdded = (props) => {
     });
     return filtered;
   }, [products]);
-
   const uniqueHousehold = unique(Household);
 
   const flashSaleHeader = () => (

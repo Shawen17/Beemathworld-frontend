@@ -3,8 +3,9 @@ import { Input, Form } from "reactstrap";
 import { password_reset_confirm } from "../actions/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
-const ResetPasswordConfirm = ({ match, password_reset_confirm }) => {
+const ResetPasswordConfirm = ({ password_reset_confirm }) => {
   const [inputs, setInputs] = useState({});
   const [requestSent, setRequestSent] = useState(false);
 
@@ -31,33 +32,43 @@ const ResetPasswordConfirm = ({ match, password_reset_confirm }) => {
   }
 
   return (
-    <div className="container" style={{ marginTop: "110px" }}>
-      <h2>Password reset confirm </h2>
-      <Form className="mt-3" onSubmit={handleSubmit}>
-        <Input
-          className="mt-3"
-          placeholder="new password.."
-          type="password"
-          name="password"
-          value={inputs.password || ""}
-          onChange={handleEventChange}
-          required
-        />
-        <Input
-          className="mt-3"
-          placeholder="confirm new password.."
-          type="password"
-          name="re_password"
-          value={inputs.re_password || ""}
-          onChange={handleEventChange}
-          required
-        />
-        <button className="btn btn-primary mt-3" type="submit">
-          {" "}
-          Reset Password
-        </button>
-      </Form>
-    </div>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+    >
+      <div className="container" style={{ marginTop: "110px" }}>
+        <h2>Password reset confirm </h2>
+        <Form className="mt-3" onSubmit={handleSubmit}>
+          <Input
+            className="mt-3"
+            placeholder="new password.."
+            type="password"
+            name="password"
+            value={inputs.password || ""}
+            onChange={handleEventChange}
+            required
+          />
+          <Input
+            className="mt-3"
+            placeholder="confirm new password.."
+            type="password"
+            name="re_password"
+            value={inputs.re_password || ""}
+            onChange={handleEventChange}
+            required
+          />
+          <button className="btn btn-primary mt-3" type="submit">
+            {" "}
+            Reset Password
+          </button>
+        </Form>
+      </div>
+    </motion.div>
   );
 };
 

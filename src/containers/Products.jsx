@@ -7,6 +7,7 @@ import { logout, addToCart } from "../actions/auth";
 import { connect } from "react-redux";
 import Pagination from "../components/Pagination";
 import { BASE_URL } from "../components/Url";
+import { motion } from "framer-motion";
 
 require("dotenv").config();
 
@@ -96,41 +97,51 @@ const Products = (props) => {
   }, [currentPage, uniqueProducts]);
 
   return (
-    <Container style={{ marginTop: "120px" }}>
-      <Row>
-        {!productValue.items || productValue.items.length <= 0 ? (
-          <div width="50%" height="80%" className="text-center">
-            <img src="/loading.gif" alt="loading.." />
-          </div>
-        ) : (
-          currentData.map((product) => (
-            <Col xs="6" sm="4" md="3" lg="2" key={product.id}>
-              <div>
-                <ProductDetailsModal
-                  key={product.id}
-                  create={true}
-                  product={product}
-                  allProducts={filteredProduct}
-                  resetState={props.resetState}
-                  descriptionDisplay={descriptionDisplay}
-                  HandleButtonClick={HandleButtonClick}
-                  count={count}
-                  decrement={decrement}
-                  increment={increment}
-                />
-              </div>
-            </Col>
-          ))
-        )}
-      </Row>
-      <Pagination
-        className="pagination mt-5"
-        currentPage={currentPage}
-        totalCount={uniqueProducts.length}
-        pageSize={PageSize}
-        onPageChange={(page) => setCurrentPage(page)}
-      />
-    </Container>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+    >
+      <Container style={{ marginTop: "120px" }}>
+        <Row>
+          {!productValue.items || productValue.items.length <= 0 ? (
+            <div width="50%" height="80%" className="text-center">
+              <img src="/loading.gif" alt="loading.." />
+            </div>
+          ) : (
+            currentData.map((product) => (
+              <Col xs="6" sm="4" md="3" lg="2" key={product.id}>
+                <div>
+                  <ProductDetailsModal
+                    key={product.id}
+                    create={true}
+                    product={product}
+                    allProducts={filteredProduct}
+                    resetState={props.resetState}
+                    descriptionDisplay={descriptionDisplay}
+                    HandleButtonClick={HandleButtonClick}
+                    count={count}
+                    decrement={decrement}
+                    increment={increment}
+                  />
+                </div>
+              </Col>
+            ))
+          )}
+        </Row>
+        <Pagination
+          className="pagination mt-5"
+          currentPage={currentPage}
+          totalCount={uniqueProducts.length}
+          pageSize={PageSize}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </Container>
+    </motion.div>
   );
 };
 

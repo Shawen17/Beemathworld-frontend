@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import OutboxOutlinedIcon from "@mui/icons-material/OutboxOutlined";
+import { motion } from "framer-motion";
 
 const Container = styled.div`
   width: 100%;
@@ -34,24 +35,34 @@ const Brand = styled.div`
 
 const SignupVerify = () => {
   return (
-    <Container>
-      <Brand>
-        <img
-          style={{ height: 60, borderRadius: 20, width: 60 }}
-          src="/BeemathLogo.png"
-          alt="beemath"
-        />
-        <h2 style={{ color: "white" }}>Beemathworld</h2>
-      </Brand>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+    >
+      <Container>
+        <Brand>
+          <img
+            style={{ height: 60, borderRadius: 20, width: 60 }}
+            src="/BeemathLogo.png"
+            alt="beemath"
+          />
+          <h2 style={{ color: "white" }}>Beemathworld</h2>
+        </Brand>
 
-      <AlertMessage>
-        <OutboxOutlinedIcon style={{ height: 60, width: 60 }} />
-        <h5>Verify your Email Address</h5>
-        <p className="mt-4">
-          A verification link as been sent to you, kindly verify your account.
-        </p>
-      </AlertMessage>
-    </Container>
+        <AlertMessage>
+          <OutboxOutlinedIcon style={{ height: 60, width: 60 }} />
+          <h5>Verify your Email Address</h5>
+          <p className="mt-4">
+            A verification link as been sent to you, kindly verify your account.
+          </p>
+        </AlertMessage>
+      </Container>
+    </motion.div>
   );
 };
 

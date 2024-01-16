@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import states from "../components/State";
 import { Container, Title, FormDisplay } from "./ContactUs";
 import { Outline } from "./Login";
+import { motion } from "framer-motion";
 
 const Signup = ({ signup, isAuthenticated }) => {
   const buttonStyle2 = {
@@ -52,88 +53,98 @@ const Signup = ({ signup, isAuthenticated }) => {
   }
 
   return (
-    <Container>
-      <Title> Create an account </Title>
-      <FormDisplay style={{ justifyContent: "center" }}>
-        <Form style={formDisplay} onSubmit={HandleSubmit}>
-          <Input
-            className="mt-3"
-            placeholder="firstname"
-            name="first_name"
-            type="text"
-            value={inputs.first_name || ""}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            className="mt-3"
-            placeholder="lastname"
-            name="last_name"
-            type="text"
-            value={inputs.last_name || ""}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            className="mt-3"
-            placeholder="abc@example.com"
-            name="email"
-            type="email"
-            value={inputs.email || ""}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            className="mt-3"
-            name="state"
-            type="select"
-            value={inputs.state || ""}
-            onChange={handleChange}
-            required
-          >
-            <option value="others">state of residence</option>
-            {states.map((location) => (
-              <option key={location.id} value={location.state}>
-                {location.state}
-              </option>
-            ))}
-          </Input>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ rotate: 0, scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+    >
+      <Container>
+        <Title> Create an account </Title>
+        <FormDisplay style={{ justifyContent: "center" }}>
+          <Form style={formDisplay} onSubmit={HandleSubmit}>
+            <Input
+              className="mt-3"
+              placeholder="firstname"
+              name="first_name"
+              type="text"
+              value={inputs.first_name || ""}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              className="mt-3"
+              placeholder="lastname"
+              name="last_name"
+              type="text"
+              value={inputs.last_name || ""}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              className="mt-3"
+              placeholder="abc@example.com"
+              name="email"
+              type="email"
+              value={inputs.email || ""}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              className="mt-3"
+              name="state"
+              type="select"
+              value={inputs.state || ""}
+              onChange={handleChange}
+              required
+            >
+              <option value="others">state of residence</option>
+              {states.map((location) => (
+                <option key={location.id} value={location.state}>
+                  {location.state}
+                </option>
+              ))}
+            </Input>
 
-          <Input
-            className="mt-3"
-            placeholder="password"
-            name="password"
-            type="password"
-            value={inputs.password || ""}
-            onChange={handleChange}
-            required
-            minLength={8}
-          />
-          <Input
-            className="mt-3"
-            placeholder="confirm password"
-            name="re_password"
-            type="password"
-            value={inputs.re_password || ""}
-            onChange={handleChange}
-            required
-          />
-          <div style={buttonStyle2}>
-            <button className="login-button" type="submit">
-              Signup
-            </button>
-          </div>
-        </Form>
-        <Outline>
-          <p className="mt-3">
-            Already have an account?
-            <Link className="signup-link" to="/login">
-              Login
-            </Link>{" "}
-          </p>
-        </Outline>
-      </FormDisplay>
-    </Container>
+            <Input
+              className="mt-3"
+              placeholder="password"
+              name="password"
+              type="password"
+              value={inputs.password || ""}
+              onChange={handleChange}
+              required
+              minLength={8}
+            />
+            <Input
+              className="mt-3"
+              placeholder="confirm password"
+              name="re_password"
+              type="password"
+              value={inputs.re_password || ""}
+              onChange={handleChange}
+              required
+            />
+            <div style={buttonStyle2}>
+              <button className="login-button" type="submit">
+                Signup
+              </button>
+            </div>
+          </Form>
+          <Outline>
+            <p className="mt-3">
+              Already have an account?
+              <Link className="signup-link" to="/login">
+                Login
+              </Link>{" "}
+            </p>
+          </Outline>
+        </FormDisplay>
+      </Container>
+    </motion.div>
   );
 };
 const mapStateToProps = (state) => ({
