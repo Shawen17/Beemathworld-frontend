@@ -17,6 +17,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   background-image:url('/about-us.jpg');
+  background-size:cover;
 
   @media screen and (max-width: 600px) {
     ${Header} {
