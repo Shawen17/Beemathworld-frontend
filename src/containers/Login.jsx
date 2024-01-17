@@ -12,15 +12,14 @@ import { motion } from "framer-motion";
 
 const Input = styled.input`
   type: ${(props) => props.type};
-  margin-left: 10px;
-
   width: 100%;
   border: none;
   border-style: none;
   &:focus {
     outline: none;
-    border-color: none;
-    border: none;
+    border: 3px solid #00b894;
+    border-right: none;
+    box-shadow: 0 0 10px #00b894;
   }
 `;
 
@@ -90,6 +89,7 @@ const Login = ({ login, isAuthenticated, loginFailed }) => {
           <Form style={formDisplay} onSubmit={HandleSubmit}>
             <SearchContainer className="mt-3" style={{ width: "100%" }}>
               <Input
+                className="inputs"
                 placeholder="abc@example.com"
                 name="email"
                 value={inputValues.email || ""}

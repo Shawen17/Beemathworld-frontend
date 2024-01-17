@@ -67,7 +67,7 @@ const Signup = ({ signup, isAuthenticated }) => {
         <FormDisplay style={{ justifyContent: "center" }}>
           <Form style={formDisplay} onSubmit={HandleSubmit}>
             <Input
-              className="mt-3"
+              className="mt-3 inputs"
               placeholder="firstname"
               name="first_name"
               type="text"
@@ -76,7 +76,7 @@ const Signup = ({ signup, isAuthenticated }) => {
               required
             />
             <Input
-              className="mt-3"
+              className="mt-3 inputs"
               placeholder="lastname"
               name="last_name"
               type="text"
@@ -85,7 +85,7 @@ const Signup = ({ signup, isAuthenticated }) => {
               required
             />
             <Input
-              className="mt-3"
+              className="mt-3 inputs"
               placeholder="abc@example.com"
               name="email"
               type="email"
@@ -94,7 +94,7 @@ const Signup = ({ signup, isAuthenticated }) => {
               required
             />
             <Input
-              className="mt-3"
+              className="mt-3 inputs"
               name="state"
               type="select"
               value={inputs.state || ""}
@@ -110,7 +110,7 @@ const Signup = ({ signup, isAuthenticated }) => {
             </Input>
 
             <Input
-              className="mt-3"
+              className="mt-3 inputs"
               placeholder="password"
               name="password"
               type="password"
@@ -120,7 +120,7 @@ const Signup = ({ signup, isAuthenticated }) => {
               minLength={8}
             />
             <Input
-              className="mt-3"
+              className="mt-3 inputs"
               placeholder="confirm password"
               name="re_password"
               type="password"
