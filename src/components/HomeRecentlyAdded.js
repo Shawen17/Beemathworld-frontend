@@ -62,6 +62,12 @@ const TopImg = styled.div`
   }
 `;
 
+const Line = styled.div`
+  height: 2px;
+  color: white;
+  background-color: gray;
+`;
+
 const HomeRecentlyAdded = (props) => {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState({
@@ -257,6 +263,7 @@ const HomeRecentlyAdded = (props) => {
 
       {Electronics.length > 0 ? (
         <CategoryContainer>
+          <Line />
           <Link
             className="nav-link"
             to={{
@@ -313,6 +320,7 @@ const HomeRecentlyAdded = (props) => {
 
       {Kitchen.length > 0 ? (
         <CategoryContainer>
+          <Line />
           <Link
             className="nav-link"
             to={{
@@ -341,6 +349,7 @@ const HomeRecentlyAdded = (props) => {
 
       {Bathroom.length > 0 ? (
         <CategoryContainer>
+          <Line />
           <Link
             className="nav-link"
             to={{
@@ -369,6 +378,7 @@ const HomeRecentlyAdded = (props) => {
 
       {products.items.sales.length > 0 ? flashSaleHeader() : ""}
       <TopCon>
+        <Line />
         {!products.items || products.items.length <= 0 ? (
           <div width="50%" height="80%" className="text-center">
             <img src="/loading.gif" alt="loading.." />
