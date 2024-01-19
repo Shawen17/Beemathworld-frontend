@@ -64,7 +64,7 @@ const TopImg = styled.div`
 
 const Line = styled.div`
   height: 2px;
-  color: white;
+  color: gray;
   background-color: gray;
 `;
 
