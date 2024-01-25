@@ -63,11 +63,11 @@ const TopImg = styled.div`
 `;
 
 const Line = styled.div`
-  height: 2px;
+  height: 0.5px;
   color: gray;
   background-color: gray;
   width: 100%;
-  margin: 0px 10px 0px 10px;
+  margin: 5px 10px 5px 10px;
 `;
 
 const HomeRecentlyAdded = (props) => {
